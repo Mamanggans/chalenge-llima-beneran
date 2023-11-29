@@ -1,0 +1,91 @@
+{
+	"info": {
+		"_postman_id": "8972a1ae-3560-4c7e-93f1-f5e973805e9b",
+		"name": "FGA CLASS",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "23294369"
+	},
+	"item": [
+		{
+			"name": "get",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": "http://localhost:8080/api/v1/users"
+			},
+			"response": []
+		},
+		{
+			"name": "post",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"tes\",\r\n    \"email\":\"GIBRAN@GMAIL.COM\",\r\n    \"password\":\"tes123\",\r\n    \"identity_type\" : \"APA\",\r\n    \"identity_number\" : \"888888888\",\r\n    \"address\" : \"AAA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/users"
+			},
+			"response": []
+		},
+		{
+			"name": "get id",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "update",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"tes1ss2\",\r\n    \"email\":\"GIBRAN1@GMAIL.COM\",\r\n    \"password\":\"tes123\"\r\n}"
+				},
+				"url": "http://localhost:8080/api/v1/users/2"
+			},
+			"response": []
+		},
+		{
+			"name": "get all akun",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "insert bank akun",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"user_id\":\"1\",\r\n    \"bank_name\":\"asdasda\",\r\n    \"Bank_account_money\":\"2222\",\r\n    \"balance\":10000\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/api/v1/accounts"
+			},
+			"response": []
+		}
+	]
+}
