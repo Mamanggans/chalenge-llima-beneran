@@ -160,9 +160,10 @@ async function updateUserById(req, res) {
     }
 
     if (password) {
-      payload.password = password;
+      const hashPass = await HashPassword(password);
+      payload.password = hashPass;
     }
-    
+
     const updatedUser = await prisma.User.update({
       where: {
         id: Number(user_id),
@@ -170,20 +171,22 @@ async function updateUserById(req, res) {
       data: payload,
     });
 
-    return res.status(200).json({
-      success: true,
-      message: "User information updated successfully.",
-      data: updatedUser,
-    });
+    let response = ResponseTemplate(updatedUser, "success", null, 200);
+    res.json(response);
+    return;
   } catch (error) {
-    console.error("Error updating user information:", error);
-    return res.status(500).json({
-      success: false,
-      message: "Internal server error.",
-      error: error.message || "An error occurred while processing your request.",
-    });
+    console.log(error);
+    let response;
+    if (error instanceof Prisma.PrismaClientKnownRequestError) {
+      response = ResponseTemplate(null, "Database error", error.message, 500);
+    } else {
+      response = ResponseTemplate(null, "internal server error", error, 500);
+    }
+    res.json(response);
+    return;
   }
 }
+
 
 async function deleteUser(req, res) {
   
